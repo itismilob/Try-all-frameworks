@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "workspaces": [
-    "apps/*"
+    "apps/*",
+    "packages/*"
   ],
   "scripts": {
     "dev-react": "npm run dev --workspace=react-repo",

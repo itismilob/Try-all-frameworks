@@ -1,7 +1,7 @@
-import "@styles/write.css";
-import { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { userType } from "@/types";
+import '@styles/write.css';
+import { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { userType } from '@/types';
 
 export default function Write() {
   const [user, setUser] = useState<userType>();
@@ -14,16 +14,27 @@ export default function Write() {
     if (!user) return;
     if (!titleRef.current || !contentRef.current) return;
 
+    const userID = user.id;
     const title = titleRef.current.value;
     const content = contentRef.current.value;
-    console.log(user, title, content);
 
-    const response = await fetch("/api/contents", {
-      method: "post",
+    if (/^\s*$/.test(title)) {
+      alert('title is empty');
+      return;
+    }
+    if (/^\s*$/.test(content)) {
+      alert('content is empty');
+      return;
+    }
+
+    console.log(userID, title, content);
+
+    const response = await fetch('/api/contents', {
+      method: 'post',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ title, content, userID: user.id }),
+      body: JSON.stringify({ title, content, userID }),
     });
 
     if (response.ok) {
@@ -37,7 +48,7 @@ export default function Write() {
   };
 
   useEffect(() => {
-    const userJson = sessionStorage.getItem("user");
+    const userJson = sessionStorage.getItem('user');
     if (!userJson) return;
     const userData = JSON.parse(userJson);
     setUser(userData);
@@ -47,16 +58,16 @@ export default function Write() {
     <>
       <h1>Create Post</h1>
       <input
-        className="title-input default-shadow"
-        placeholder="Title"
+        className='title-input default-shadow'
+        placeholder='Title'
         ref={titleRef}
       />
       <textarea
-        className="content-input default-shadow"
-        placeholder="Content"
+        className='content-input default-shadow'
+        placeholder='Content'
         ref={contentRef}
       />
-      <div className="button-container">
+      <div className='button-container'>
         <button onClick={submitHandler}>Submit</button>
         <button onClick={discardHandler}>Discard</button>
       </div>

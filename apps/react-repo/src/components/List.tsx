@@ -1,17 +1,17 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { contentType, userType } from "@/types";
-import { format } from "date-fns";
-import "@styles/list.css";
+import { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { contentType, userType } from 'types';
+import { format } from 'date-fns';
+import '@styles/list.css';
 
-export default function App() {
+export default function List() {
   const [userData, setUserData] = useState<userType>();
   const [contents, setContents] = useState<contentType[]>();
 
   const navigate = useNavigate();
 
   const fetchData = async () => {
-    let response = await fetch("/api/contents", { method: "get" });
+    let response = await fetch('/api/contents', { method: 'get' });
     if (response.ok) {
       const result = await response.json();
       setContents(result);
@@ -19,7 +19,7 @@ export default function App() {
   };
 
   useEffect(() => {
-    const userJson = sessionStorage.getItem("user");
+    const userJson = sessionStorage.getItem('user');
     if (!userJson) {
       return;
     }
@@ -33,25 +33,21 @@ export default function App() {
     navigate(`/react/content/${id}`);
   };
 
-  const writeClickHandler = () => {
-    navigate(`/react/write`);
-  };
-
   return (
     <>
-      <div className="user-container  default-shadow">
+      <div className={`user-container ${userData?.framework}-shadow`}>
         <div>
           <img src={userData?.profile} />
           <h1>{userData?.username}</h1>
         </div>
       </div>
-      <div className="contents-container  default-shadow">
-        <div className="contents-header">
+      <div className='contents-container  default-shadow'>
+        <div className='contents-header'>
           <h2>Contents</h2>
-          <button onClick={writeClickHandler}>
-            <img src="/public/pen.svg" alt="pen|" />
+          <Link to={`/react/write`}>
+            <img src='/public/pen.svg' alt='pen|' />
             write
-          </button>
+          </Link>
         </div>
         <ol>
           {contents ? (
@@ -63,17 +59,17 @@ export default function App() {
                 key={i}
                 className={`${content.framework}-shadow ${content.framework}-hover`}
               >
-                <div className="contents-info">
+                <div className='contents-info'>
                   <div>
                     <img src={content.profile} />
                     <h4>{content.username}</h4>
                   </div>
                   <img src={`/public/${content.framework}.svg`} />
                 </div>
-                <div className="contents-date">
+                <div className='contents-date'>
                   <h3>{content.title}</h3>
-                  <h3 className="date">
-                    {format(content?.date, "yyyy/MM/dd")}
+                  <h3 className='date'>
+                    {format(content?.date, 'yyyy/MM/dd')}
                   </h3>
                 </div>
               </li>

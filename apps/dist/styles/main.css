@@ -120,7 +120,7 @@ blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-  content: "";
+  content: '';
   content: none;
 }
 table {
@@ -151,6 +151,10 @@ a {
   --angular-color: #c50836;
   --svelte-color: #ff4408;
   --jquery-color: #1770b2;
+}
+
+* {
+  font-family: 'Open Sans', serif !important;
 }
 
 header {
@@ -193,6 +197,10 @@ a {
   background-color: white;
   border-radius: 5px;
   padding: 2px 5px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 button:hover,
 a:hover {

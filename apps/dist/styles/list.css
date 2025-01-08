@@ -43,7 +43,7 @@
   font-size: 15px;
   font-weight: bold;
 }
-.contents-header > button {
+.contents-header > a {
   display: flex;
   align-items: center;
   gap: 5px;
@@ -51,10 +51,10 @@
   overflow: hidden;
   padding: 2px 5px;
 }
-.contents-header > button:hover {
+.contents-header > a:hover {
   background-color: lightgray;
 }
-.contents-header > button > img {
+.contents-header > a > img {
   width: 10px;
   height: 10px;
 }

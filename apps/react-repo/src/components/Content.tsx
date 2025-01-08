@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState } from "react";
-import { commentType, contentType, userType } from "@/types";
-import { format } from "date-fns";
+import { useEffect, useRef, useState } from 'react';
+import { commentType, contentType, userType } from '@/types';
+import { format } from 'date-fns';
 
-import "@styles/content.css";
-import { useParams } from "react-router-dom";
+import '@styles/content.css';
+import { useParams } from 'react-router-dom';
 
 export default function Content() {
   const [content, setContent] = useState<contentType>();
@@ -15,12 +15,12 @@ export default function Content() {
 
   const fetchContentData = async () => {
     if (!contentID) {
-      console.log("no content id");
+      console.log('no content id');
       return;
     }
 
     const response = await fetch(`/api/contents/${contentID}`, {
-      method: "get",
+      method: 'get',
     });
     if (!response.ok) return;
 
@@ -32,12 +32,12 @@ export default function Content() {
 
   const fetchCommentsData = async () => {
     if (!content) {
-      console.log("no content");
+      console.log('no content');
       return;
     }
 
     const response = await fetch(`/api/comments?contentID=${content.id}`, {
-      method: "get",
+      method: 'get',
     });
     if (!response.ok) return;
 
@@ -46,7 +46,7 @@ export default function Content() {
   };
 
   useEffect(() => {
-    const userJson = sessionStorage.getItem("user");
+    const userJson = sessionStorage.getItem('user');
     if (!userJson) return;
     const userData = JSON.parse(userJson);
     setUser(userData);
@@ -64,9 +64,14 @@ export default function Content() {
     const commentInput = commentInputRef.current?.value;
     console.log(commentInput);
 
-    const response = await fetch("/api/comments", {
-      method: "post",
-      headers: { "Content-Type": "application/json" },
+    if (commentInput && /^\s*$/.test(commentInput)) {
+      alert('comments is empty');
+      return;
+    }
+
+    const response = await fetch('/api/comments', {
+      method: 'post',
+      headers: { 'Content-Type': 'application/json' },
       //userID, contentID, comment + date
       body: JSON.stringify({
         userID: user.id,
@@ -76,7 +81,7 @@ export default function Content() {
     });
 
     if (response.ok) {
-      if (commentInputRef.current) commentInputRef.current.value = "";
+      if (commentInputRef.current) commentInputRef.current.value = '';
 
       await fetchCommentsData();
     }
@@ -89,47 +94,47 @@ export default function Content() {
           <h1>{content?.title}</h1>
           {content && (
             <img
-              className="framework-icon"
+              className='framework-icon'
               src={`/public/${content?.framework}.svg`}
             />
           )}
         </div>
         <div>
-          <div className="contents-info">
+          <div className='contents-info'>
             <div>
               <img src={content?.profile} />
               <h4>{content?.username}</h4>
             </div>
           </div>
-          <h3>{content && format(content?.date, "yyyy/MM/dd")}</h3>
+          <h3>{content && format(content?.date, 'yyyy/MM/dd')}</h3>
         </div>
       </div>
-      <div className="content-main default-shadow">
+      <div className='content-main default-shadow'>
         <p>{content?.content}</p>
       </div>
-      <div className="comment-input">
-        <textarea className="default-shadow" ref={commentInputRef} />
-        <button onClick={commentClickHandler} className="default-shadow">
+      <div className='comment-input'>
+        <textarea className='default-shadow' ref={commentInputRef} />
+        <button onClick={commentClickHandler} className='default-shadow'>
           comment
         </button>
       </div>
-      <div className="contents-container default-shadow">
+      <div className='contents-container default-shadow'>
         <h2>Comment</h2>
         <ol>
           {Array.isArray(comments) && comments[0] ? (
             comments.map((comment: commentType, i: number) => (
               <li key={i} className={`${comment.framework}-shadow`}>
-                <div className="contents-info">
+                <div className='contents-info'>
                   <div>
                     <img src={comment.profile} />
                     <h4>{comment.username}</h4>
                   </div>
                   <img src={`/public/${comment.framework}.svg`} />
                 </div>
-                <div className="contents-date">
+                <div className='contents-date'>
                   <h3>{comment.comment}</h3>
-                  <h3 className="date">
-                    {format(comment?.date, "yyyy/MM/dd")}
+                  <h3 className='date'>
+                    {format(comment?.date, 'yyyy/MM/dd')}
                   </h3>
                 </div>
               </li>
