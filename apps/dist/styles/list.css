@@ -1,0 +1,108 @@
+.user-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.user-container > div {
+  display: flex;
+  gap: 5px;
+  align-items: end;
+}
+.user-container > div > h1 {
+  padding: 4px;
+}
+
+.user-container > div > img {
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+/* - contents - */
+.contents-container {
+  width: 100%;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 20px;
+  padding: 10px;
+}
+
+.contents-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.contents-header > h2 {
+  font-size: 15px;
+  font-weight: bold;
+}
+.contents-header > button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border-radius: 5px;
+  overflow: hidden;
+  padding: 2px 5px;
+}
+.contents-header > button:hover {
+  background-color: lightgray;
+}
+.contents-header > button > img {
+  width: 10px;
+  height: 10px;
+}
+
+/* - contents list - */
+.contents-container > ol {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 10px;
+}
+
+.contents-container > ol > li {
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contents-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+.contents-info > div {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.contents-info > div > img {
+  width: 25px;
+  height: 25px;
+  border-radius: 100%;
+  box-shadow: 0 3px 8px -3px gray;
+}
+.contents-info > div > h4 {
+  font-weight: bold;
+  font-size: 12px;
+}
+.contents-info > img {
+  width: 20px;
+  height: 20px;
+}
+
+.contents-date {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
