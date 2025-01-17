@@ -19,4 +19,14 @@ router.get('/vue/*', (req, res) => {
   res.sendFile(path.join(__dirname, '../dist/vue-build/index.html'));
 });
 
+router.use(
+  '/angular',
+  express.static(path.join(__dirname, '../dist/angular-build'))
+);
+router.get('/angular/*', (req, res) => {
+  res.sendFile(
+    path.join(__dirname, '../dist/angular-build/browser/index.html')
+  );
+});
+
 module.exports = router;

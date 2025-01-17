@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import '@styles/content.css';
 import type { userType, commentType, contentType } from 'types';
 import { onMounted, ref, watch } from 'vue';
 import { format } from 'date-fns';

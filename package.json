@@ -11,6 +11,8 @@
     "build-react": "npm run build --workspace=react-repo",
     "dev-vue": "npm run dev --workspace=vue-repo",
     "build-vue": "npm run build --workspace=vue-repo",
+    "dev-angular": "npm run start --workspace=angular-repo",
+    "build-angular": "npm run build --workspace=angular-repo",
     "nodemon": "npm run nodemon --workspace=server",
     "dev": "npm run dev --workspace=server"
   },

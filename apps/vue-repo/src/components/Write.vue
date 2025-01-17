@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import '@styles/write.css';
 import { onMounted, ref } from 'vue';
 import type { userType } from 'types';
 import router from '@/router';

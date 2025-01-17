@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import '@styles/list.css';
-
 import { onMounted, ref } from 'vue';
 import { format } from 'date-fns';
 
