@@ -26,3 +26,9 @@ export type userType = {
   framework: string;
   profile: string;
 };
+
+export type cardProperty = {
+  content?: contentType;
+  comment?: commentType;
+  cardClickHandler?: (id: string) => void;
+};

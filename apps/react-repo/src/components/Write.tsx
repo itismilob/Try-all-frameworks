@@ -1,7 +1,7 @@
 import '@styles/write.css';
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { userType } from '@/types';
+import { userType } from 'types';
 
 export default function Write() {
   const [user, setUser] = useState<userType>();

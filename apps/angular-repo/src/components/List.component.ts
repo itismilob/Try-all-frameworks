@@ -3,11 +3,12 @@ import type { contentType, userType } from 'types';
 import { format } from 'date-fns';
 import { Router, RouterLink } from '@angular/router';
 import { isValidArray } from '../utils/utils';
+import { CardComponent } from './Card.component';
 
 @Component({
   selector: 'list',
   encapsulation: ViewEncapsulation.None,
-  imports: [RouterLink],
+  imports: [RouterLink, CardComponent],
   template: `<main>
     <div class="user-container {{ userData?.framework }}-shadow">
       <div>
@@ -25,22 +26,7 @@ import { isValidArray } from '../utils/utils';
       </div>
       <ol>
         @if(checkArrayValidity()){ @for(content of contents; track content.id){
-        <li
-          class="{{ content.framework }}-shadow {{ content.framework }}-hover"
-          (click)="listClickHandler(content.id)"
-        >
-          <div class="contents-info">
-            <div>
-              <img [src]="content.profile" />
-              <h4>{{ content.username }}</h4>
-            </div>
-            <img src="/public/{{ content.framework }}.svg" />
-          </div>
-          <div class="contents-date">
-            <h3>{{ content.title }}</h3>
-            <h3 class="date">{{ getFormattedDate(content) }}</h3>
-          </div>
-        </li>
+        <card [props]="{content, cardClickHandler:listClickHandler}" />
         } }@else{
         <div>No contents</div>
         }

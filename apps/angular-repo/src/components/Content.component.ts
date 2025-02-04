@@ -1,13 +1,14 @@
 import { Component, Input } from '@angular/core';
 import type { userType, commentType, contentType } from 'types';
 import { format } from 'date-fns';
-import { isValidArray } from '../utils/utils';
+import { isValidArray, getFormattedDate } from '../utils/utils';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { CardComponent } from './Card.component';
 
 @Component({
   selector: 'content',
-  imports: [FormsModule],
+  imports: [FormsModule, CardComponent],
   template: `@if(content){
     <main>
       <div class="content-info {{ content.framework }}-shadow">
@@ -45,21 +46,8 @@ import { ActivatedRoute } from '@angular/router';
         <ol>
           @if(isVaildArray(comments)){ @for(comment of comments; track
           comment.id ){
-          <li class="{{ comment.framework }}-shadow">
-            <div class="contents-info">
-              <div>
-                <img [src]="comment.profile" />
-                <h4>{{ comment.username }}</h4>
-              </div>
-              <img src="/public/{{ comment.framework }}.svg" />
-            </div>
-            <div class="contents-date">
-              <h3>{{ comment.comment }}</h3>
-              <h3 class="date">
-                {{ getFormattedDate(comment) }}
-              </h3>
-            </div>
-          </li>
+
+          <card [props]="{comment}" />
           } }@else{
           <div>No contents</div>
           }
@@ -77,13 +65,10 @@ export class ContentComponent {
 
   commentInputRef = '';
   isVaildArray = isValidArray;
+  getFormattedDate = getFormattedDate;
 
   constructor(private route: ActivatedRoute) {
     this.contentID = route.snapshot.params['contentID'];
-  }
-
-  getFormattedDate(content: contentType | commentType): string {
-    return format(content.date, 'yyyy/MM/dd');
   }
 
   fetchContentData = async () => {

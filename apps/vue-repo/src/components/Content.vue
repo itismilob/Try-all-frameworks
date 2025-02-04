@@ -3,6 +3,7 @@ import type { userType, commentType, contentType } from 'types';
 import { onMounted, ref, watch } from 'vue';
 import { format } from 'date-fns';
 import { useRoute } from 'vue-router';
+import Card from './Card.vue';
 
 const content = ref<contentType>();
 const comments = ref<commentType[]>([]);
@@ -89,10 +90,14 @@ const commentClickHandler = async () => {
 </script>
 
 <template>
-  <div :class="`content-info ${content?.framework}-shadow`">
+  <div v-if="content" :class="`content-info ${content?.framework}-shadow`">
     <div>
       <h1>{{ content?.title }}</h1>
-      <img :src="`/public/${content?.framework}.svg`" class="framework-icon" />
+      <img
+        :src="`/public/${content?.framework}.svg`"
+        alt="framework-icon"
+        class="framework-icon"
+      />
     </div>
     <div>
       <div class="contents-info">
@@ -101,7 +106,7 @@ const commentClickHandler = async () => {
           <h4>{{ content?.username }}</h4>
         </div>
       </div>
-      <h3>{{ content && format(content?.date, 'yyyy/MM/dd') }}</h3>
+      <h3>{{ content && format(content.date, 'yyyy/MM/dd') }}</h3>
     </div>
   </div>
   <div class="content-main default-shadow">
@@ -114,24 +119,12 @@ const commentClickHandler = async () => {
   <div class="contents-container default-shadow">
     <h2>Comment</h2>
     <ol>
-      <li
+      <Card
         v-if="Array.isArray(comments) && comments[0]"
         v-for="comment in comments"
         :key="comment.id"
-        :class="`${comment.framework}-shadow`"
-      >
-        <div class="contents-info">
-          <div>
-            <img :src="comment.profile" />
-            <h4>{{ comment.username }}</h4>
-          </div>
-          <img :src="`/public/${comment.framework}.svg`" />
-        </div>
-        <div class="contents-date">
-          <h3>{{ comment.comment }}</h3>
-          <h3 class="date">{{ format(comment?.date, 'yyyy/MM/dd') }}</h3>
-        </div>
-      </li>
+        :comment="comment"
+      />
 
       <div v-else>No contents</div>
     </ol>

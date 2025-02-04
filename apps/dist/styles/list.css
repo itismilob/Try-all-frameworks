@@ -68,7 +68,7 @@
   padding: 10px;
 }
 
-.contents-container > ol > li {
+.contents-container > ol li {
   padding: 10px;
   border-radius: 10px;
   display: flex;

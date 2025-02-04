@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import { format } from 'date-fns';
 
 import { RouterLink } from 'vue-router';
 import type { contentType, userType } from 'types';
 import router from '@/router';
+import Card from './Card.vue';
 
 //--------
 
@@ -53,25 +53,17 @@ const listClickHandler = (id: string) => {
       </RouterLink>
     </div>
     <ol>
-      <li
+      <Card
         v-if="Array.isArray(contents) && contents[0]"
         v-for="content in contents"
         :key="content.id"
-        :class="`${content.framework}-shadow ${content.framework}-hover`"
-        @click="listClickHandler(content.id)"
-      >
-        <div class="contents-info">
-          <div>
-            <img :src="content.profile" />
-            <h4>{{ content.username }}</h4>
-          </div>
-          <img :src="`/public/${content.framework}.svg`" />
-        </div>
-        <div class="contents-date">
-          <h3>{{ content.title }}</h3>
-          <h3 class="date">{{ format(content?.date, 'yyyy/MM/dd') }}</h3>
-        </div>
-      </li>
+        :content="content"
+        :card-click-handler="
+          () => {
+            listClickHandler(content.id);
+          }
+        "
+      />
 
       <div v-else>No contents</div>
     </ol>

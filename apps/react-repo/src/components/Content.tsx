@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
-import { commentType, contentType, userType } from '@/types';
+import { commentType, contentType, userType } from 'types';
 import { format } from 'date-fns';
+import Card from '@/components/Card';
 
 import '@styles/content.css';
 import { useParams } from 'react-router-dom';
@@ -123,21 +124,7 @@ export default function Content() {
         <ol>
           {Array.isArray(comments) && comments[0] ? (
             comments.map((comment: commentType, i: number) => (
-              <li key={i} className={`${comment.framework}-shadow`}>
-                <div className='contents-info'>
-                  <div>
-                    <img src={comment.profile} />
-                    <h4>{comment.username}</h4>
-                  </div>
-                  <img src={`/public/${comment.framework}.svg`} />
-                </div>
-                <div className='contents-date'>
-                  <h3>{comment.comment}</h3>
-                  <h3 className='date'>
-                    {format(comment?.date, 'yyyy/MM/dd')}
-                  </h3>
-                </div>
-              </li>
+              <Card key={i} comment={{ ...comment }} />
             ))
           ) : (
             <div>No contents</div>

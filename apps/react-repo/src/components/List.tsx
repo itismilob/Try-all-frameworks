@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { contentType, userType } from 'types';
-import { format } from 'date-fns';
 import '@styles/list.css';
+import Card from './Card';
 
 export default function List() {
   const [userData, setUserData] = useState<userType>();
@@ -52,27 +52,11 @@ export default function List() {
         <ol>
           {contents ? (
             contents.map((content: contentType, i: number) => (
-              <li
-                onClick={() => {
-                  listClickHandler(content.id);
-                }}
+              <Card
                 key={i}
-                className={`${content.framework}-shadow ${content.framework}-hover`}
-              >
-                <div className='contents-info'>
-                  <div>
-                    <img src={content.profile} />
-                    <h4>{content.username}</h4>
-                  </div>
-                  <img src={`/public/${content.framework}.svg`} />
-                </div>
-                <div className='contents-date'>
-                  <h3>{content.title}</h3>
-                  <h3 className='date'>
-                    {format(content?.date, 'yyyy/MM/dd')}
-                  </h3>
-                </div>
-              </li>
+                content={{ ...content }}
+                cardClickHandler={listClickHandler}
+              />
             ))
           ) : (
             <div>No contents</div>
