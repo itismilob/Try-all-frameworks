@@ -1,0 +1,1 @@
+import{a as o,t as p}from"../chunks/DzRGIKil.js";import{p as s,t as i,a as m,c as d,r as f}from"../chunks/CkhXREui.js";import{s as v}from"../chunks/DQkueo3U.js";var c=p("<div> </div>");function x(e,a){s(a,!0);var t=c(),r=d(t);f(t),i(()=>v(r,`CONTENT!!! ${a.data.id??""}`)),o(e,t),m()}export{x as component};

@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
-import { ListComponent } from './components/List.component';
-import { ContentComponent } from './components/Content.component';
-import { WriteComponent } from './components/Write.component';
-import { NotAuthComponent } from './components/NotAuth.component';
-import { NotFoundComponent } from './components/NotFound.component';
+import { ListComponent } from './pages/List.component';
+import { ContentComponent } from './pages/Content.component';
+import { WriteComponent } from './pages/Write.component';
+import { NotAuthComponent } from './pages/NotAuth.component';
+import { NotFoundComponent } from './pages/NotFound.component';
 
 export const routes: Routes = [
   {
