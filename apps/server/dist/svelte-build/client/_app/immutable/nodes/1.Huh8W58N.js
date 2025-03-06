@@ -1,1 +1,0 @@
-import{a as t,t as a}from"../chunks/ClanTBNt.js";import"../chunks/CyZBEZvf.js";import{n}from"../chunks/H5THvfYN.js";var e=a("<h1>404</h1> <div>Not Found</div>",1);function d(o){var r=e();n(2),t(o,r)}export{d as component};
