@@ -11,7 +11,7 @@
 (A) make #svelte {start:2025-01-17T15:08:23} {cm:2025-03-06} {duration:1m-17d_15h29m}
 (B) connect #svelte {cm:2025-03-06}
 
-(A) make #jquery {start:2025-03-06T16:37:52}
+(A) make #jquery
 (B) connect #jquery
 
 (C) make list CARD component to all framework
