@@ -31,4 +31,9 @@ router.get('/angular/*', (req, res) => {
 router.use('/svelte', svelteHandler);
 router.get('/svelte/*', express.static(path.join(__dirname, './dist/svelte-build')));
 
+router.use('/jquery', express.static(path.join(__dirname, './dist/jquery-build')));
+router.get('/jquery/*', (req, res) => {
+	res.sendFile(path.join(__dirname, './dist/jquery-build/index.html'));
+});
+
 export default router;

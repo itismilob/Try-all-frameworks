@@ -1,13 +1,17 @@
+import { readFileSync } from 'fs';
+import express from 'express';
 import admin from 'firebase-admin';
 import bodyParser from 'body-parser';
-import express from 'express';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import { initializeApp, cert } from 'firebase-admin/app';
-import serviceAccount from '../../tryallframeworks-firebase-adminsdk-p2tx8-be3d9d5a4e.json' assert { type: 'json' };
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+
+const serviceAccount = JSON.parse(
+	readFileSync('../../tryallframeworks-firebase-adminsdk-p2tx8-be3d9d5a4e.json', 'utf8')
+);
 
 const server = express();
 const PORT = 8080;
@@ -22,7 +26,7 @@ initializeApp({
 const dbRouter = await import('./db.js');
 const staticRouter = await import('./static.js');
 
-server.use(bodyParser.json());
+server.use(express.json());
 server.use((req, res, next) => {
 	console.log(`${req.method} ${req.originalUrl}`);
 	next();

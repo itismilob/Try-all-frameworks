@@ -17,6 +17,8 @@
 		"build-angular": "npm run build --workspace=angular-repo",
 		"dev-svelte": "npm run dev --workspace=svelte-repo",
 		"build-svelte": "npm run build --workspace=svelte-repo",
+		"dev-jquery": "npm run dev --workspace=jquery-repo",
+		"build-jquery": "npm run build --workspace=jquery-repo",
 		"build-types": "npm run build --workspace=types"
 	},
 	"author": "",

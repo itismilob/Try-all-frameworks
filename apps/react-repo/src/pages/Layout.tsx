@@ -40,7 +40,7 @@ export default function Layout() {
 				</main>
 			</div>
 			<div className="framework-title">
-				React JS
+				React
 				<img className="framework-icon" src="/public/react.svg" />
 			</div>
 		</div>

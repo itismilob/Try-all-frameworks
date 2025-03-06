@@ -51,6 +51,10 @@ const login = (user) => {
 
 	const userData = JSON.stringify(user);
 	sessionStorage.setItem('user', userData);
+	if (user.framework === 'jquery') {
+		window.location.href = '/jquery/#list';
+		return;
+	}
 	window.location.href = `/${user.framework}/`;
 };
 

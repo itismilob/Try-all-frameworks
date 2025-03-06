@@ -40,7 +40,8 @@ onMounted(() => {
 			</main>
 		</div>
 		<div class="framework-title">
-			Vue JS <img class="framework-icon" :src="`/public/vue.svg`" />
+			Vue
+			<img class="framework-icon" :src="`/public/vue.svg`" />
 		</div>
 	</div>
 </template>

@@ -1,31 +1,51 @@
-import "./style.css";
-import typescriptLogo from "./typescript.svg";
-import viteLogo from "/vite.svg";
-import { setupCounter } from "./counter.ts";
+import $ from 'jquery';
 
-import $ from "jquery";
+import '@styles/main.css';
+import '@styles/framework.css';
+import '@styles/list.css';
+import '@styles/content.css';
+import '@styles/login.css';
+import '@styles/write.css';
+import '@styles/card.css';
+
+import Layout from './pages/layout';
+import List from './pages/list';
+import Content from './pages/Content';
+import Write from './pages/Write';
+import NotAuth from './pages/NotAuth';
+import NotFound from './pages/NotFound';
+
+let page = '';
 
 $(document).ready(() => {
-  const name: string = "jQuery with TypeScript";
-  console.log(`Hello, ${name}!`);
+	loadPage();
 });
 
-document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://www.typescriptlang.org/" target="_blank">
-      <img src="${typescriptLogo}" class="logo vanilla" alt="TypeScript logo" />
-    </a>
-    <h1>Vite + TypeScript</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite and TypeScript logos to learn more
-    </p>
-  </div>
-`;
+$(window).on('hashchange', () => {
+	loadPage();
+});
 
-setupCounter(document.querySelector<HTMLButtonElement>("#counter")!);
+const loadPage = () => {
+	const currentPage = location.hash.split('/')[0];
+	console.log(location.hash);
+
+	// routing
+	switch (currentPage) {
+		case '#list':
+			page = List();
+			break;
+		case '#content':
+			page = Content();
+			break;
+		case '#write':
+			page = Write();
+			break;
+		case '#not-auth':
+			page = NotAuth();
+			break;
+		default:
+			page = NotFound();
+	}
+
+	$('#app').html(Layout(page));
+};
