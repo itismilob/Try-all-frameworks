@@ -77,7 +77,8 @@ tryallframeworks-firebase-adminsdk-p2tx8-be3d9d5a4e.json
 
 # build files
 
-/apps/server/build/angular-build
-/apps/server/build/svelte-build
-/apps/server/build/vue-build
-/apps/server/build/react-build
+/apps/server/dist/angular-build
+/apps/server/dist/svelte-build
+/apps/server/dist/vue-build
+/apps/server/dist/react-build
+
