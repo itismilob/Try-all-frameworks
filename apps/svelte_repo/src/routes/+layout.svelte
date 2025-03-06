@@ -1,7 +1,36 @@
 <script lang="ts">
-	let { children } = $props();
+	import { onMount } from 'svelte';
+	import { goto } from '$app/navigation';
+
 	import '@styles/main.css';
 	import '@styles/framework.css';
+	import '@styles/list.css';
+	import '@styles/content.css';
+	import '@styles/write.css';
+
+	let { children } = $props();
+	let isUser = $state(true);
+
+	const logoutHandler = () => {
+		sessionStorage.removeItem('user');
+		window.location.href = '/';
+	};
+
+	onMount(() => {
+		const userJson = sessionStorage.getItem('user');
+		if (!userJson) {
+			console.log('no user');
+			isUser = false;
+			goto('/svelte/not-auth');
+			return;
+		}
+
+		const result = JSON.parse(userJson);
+		console.log(result.framework);
+		if (result.framework !== 'svelte') {
+			window.location.href = `/${result.framework}`;
+		}
+	});
 </script>
 
 <svelte:head>
@@ -10,13 +39,17 @@
 </svelte:head>
 
 <div class="framework-border svelte-border">
-	<main>
-		<header>
-			<a href="/svelte">Svelte home</a>
-			<button>Logout</button>
-		</header>
-		{@render children()}
-	</main>
+	<div class="main-container">
+		{#if isUser}
+			<header>
+				<a href="/svelte/">Svelte home</a>
+				<button onclick={logoutHandler}>Logout</button>
+			</header>
+		{/if}
+		<main>
+			{@render children()}
+		</main>
+	</div>
 	<div class="framework-title">
 		SvelteKit
 		<img class="framework-icon" src="/public/svelte.svg" alt="framework-icon" />

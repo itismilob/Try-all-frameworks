@@ -1,7 +1,6 @@
 <!-- List page -->
 
 <script lang="ts">
-	import '@styles/list.css';
 	import type { contentType, userType } from 'types';
 	import Card from '../components/card.svelte';
 

@@ -1,40 +1,47 @@
-const admin = require('firebase-admin');
-const bodyParser = require('body-parser');
-const express = require('express');
+import admin from 'firebase-admin';
+import bodyParser from 'body-parser';
+import express from 'express';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+import { initializeApp, cert } from 'firebase-admin/app';
+import serviceAccount from '../../tryallframeworks-firebase-adminsdk-p2tx8-be3d9d5a4e.json' assert { type: 'json' };
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 const server = express();
-const path = require('path');
+const PORT = 8080;
 
-const serviceAccount = require('../../tryallframeworks-firebase-adminsdk-p2tx8-be3d9d5a4e.json');
-const { initializeApp, cert } = require('firebase-admin/app');
-
+// Firebase 초기화
 initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: 'https://tryallframeworks.fierbaseio.com',
+	credential: admin.credential.cert(serviceAccount),
+	databaseURL: 'https://tryallframeworks.fierbaseio.com'
 });
 
-server.use(bodyParser.json());
+// Firebase 초기화 후에 라우터 import
+const dbRouter = await import('./db.js');
+const staticRouter = await import('./static.js');
 
+server.use(bodyParser.json());
 server.use((req, res, next) => {
-  console.log(`${req.method} ${req.originalUrl}`);
-  next();
+	console.log(`${req.method} ${req.originalUrl}`);
+	next();
 });
 
 //////
 
-const dbRouter = require('./db');
-const staticRouter = require('./static');
-server.use('/api', dbRouter);
-server.use('/', staticRouter);
+server.use('/api', dbRouter.default);
+server.use('/', staticRouter.default);
 
 server.use((err, req, res, next) => {
-  console.error(err);
-  res.status(err.status || 500).json({
-    error: {
-      message: err.message || 'Internal Server Error',
-    },
-  });
+	console.error(err);
+	res.status(err.status || 500).json({
+		error: {
+			message: err.message || 'Internal Server Error'
+		}
+	});
 });
 
-server.listen('8080', () => {
-  console.log('Server open in 8080');
+server.listen(PORT, () => {
+	console.log(`Server open in ${PORT}\nhttp://localhost:${PORT}`);
 });

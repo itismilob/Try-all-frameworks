@@ -1,0 +1,1 @@
+import{a as t,t as e}from"../chunks/ClanTBNt.js";import"../chunks/CyZBEZvf.js";import{n as r}from"../chunks/H5THvfYN.js";var n=e('<h1>Please Login</h1> <a href="/">Go back</a>',1);function i(a){var o=n();r(2),t(a,o)}export{i as component};

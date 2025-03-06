@@ -1,31 +1,31 @@
 {
-  "name": "try_all_frameworks",
-  "version": "1.0.0",
-  "main": "index.js",
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
-  "scripts": {
-    "dev": "npm run nodemon --workspace=server",
-    "build": "npm run build --workspaces",
-    "dev-react": "npm run dev --workspace=react-repo",
-    "build-react": "npm run build --workspace=react-repo",
-    "dev-vue": "npm run dev --workspace=vue-repo",
-    "build-vue": "npm run build --workspace=vue-repo",
-    "dev-angular": "npm run start --workspace=angular-repo",
-    "build-angular": "npm run build --workspace=angular-repo",
-    "dev-svelte": "npm run dev --workspace=svelte-repo",
-    "build-svelte": "npm run build --workspace=svelte-repo",
-    "build-types": "npm run build --workspace=types"
-  },
-  "author": "",
-  "license": "ISC",
-  "description": "",
-  "dependencies": {
-    "@firebasegen/default-connector": "file:dataconnect-generated/js/default-connector",
-    "date-fns": "^4.1.0",
-    "firebase": "^11.1.0",
-    "firebase-admin": "^13.0.2"
-  }
+	"name": "try_all_frameworks",
+	"version": "1.0.0",
+	"main": "index.js",
+	"workspaces": [
+		"apps/*",
+		"packages/*"
+	],
+	"scripts": {
+		"dev": "npm run nodemon --workspace=server",
+		"build": "npm run build --workspaces",
+		"dev-react": "npm run dev --workspace=react-repo",
+		"build-react": "npm run build --workspace=react-repo",
+		"dev-vue": "npm run dev --workspace=vue-repo",
+		"build-vue": "npm run build --workspace=vue-repo",
+		"dev-angular": "npm run start --workspace=angular-repo",
+		"build-angular": "npm run build --workspace=angular-repo",
+		"dev-svelte": "npm run dev --workspace=svelte-repo",
+		"build-svelte": "npm run build --workspace=svelte-repo",
+		"build-types": "npm run build --workspace=types"
+	},
+	"author": "",
+	"license": "ISC",
+	"description": "",
+	"dependencies": {
+		"@firebasegen/default-connector": "file:dataconnect-generated/js/default-connector",
+		"date-fns": "^4.1.0",
+		"firebase": "^11.1.0",
+		"firebase-admin": "^13.0.2"
+	}
 }

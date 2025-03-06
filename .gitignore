@@ -72,3 +72,12 @@ node_modules/
 # firebase
 firebaseConfig.js
 tryallframeworks-firebase-adminsdk-p2tx8-be3d9d5a4e.json
+
+
+
+# build files
+
+/apps/server/build/angular-build
+/apps/server/build/svelte-build
+/apps/server/build/vue-build
+/apps/server/build/react-build
