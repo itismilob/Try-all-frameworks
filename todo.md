@@ -18,5 +18,5 @@
 
 (C) delete firebase server {cm:2025-03-10}
 
-(C) summary
-(D) post blog
+(C) summary {cm:2025-03-10}
+(D) post blog {cm:2025-03-10}
