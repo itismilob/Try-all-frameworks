@@ -53,7 +53,7 @@
 | 대형 프로젝트 |   라이브러리를 활용   |   라이브러리를 활용   | 대형프로젝트에 최적  |            X             |        X         |
 |   파일 포맷   |    `.jsx`, `.tsx`     |        `.vue`         |   `.component.ts`    |        `.svelte`         |   `.js`, `.ts`   |
 
-## SSR
+# SSR 배포
 
 서버를 통해 하나의 IP로 배포하기 위해서 모두 SSR을 사용했다.
 
@@ -78,3 +78,21 @@ router.get('/svelte/*', express.static(path.join(__dirname, './dist/svelte-build
 ```
 
 - JQuery : Typescript를 빌드해 서버에서 배포
+
+# 시작하기
+
+Firebase Console에서 프로젝트를 생성 후 설정 파일 추가
+프로젝트 설정에서 `npm SDK` 복사해서 `firebaseConfig.js`파일로 추가
+서비스 계정에서 `Admin SDK` 새 비공개 키를 만들어서 `/admin/AdminSDK.json`파일로 추가
+
+`server/.env` 파일 생성
+
+```js
+// server/.env
+FIREBASE_DATABASE_URL=https://{firebaseConfig.authDomain}
+FIREBASE_SERVICE_ACCOUNT_PATH=../../admin/{AdminSDK.json}
+PORT=8080
+```
+
+`npm run build` : 빌드
+`npm run dev` : 서버 실행
