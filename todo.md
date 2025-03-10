@@ -11,12 +11,12 @@
 (A) make #svelte {start:2025-01-17T15:08:23} {cm:2025-03-06} {duration:1m-17d_15h29m}
 (B) connect #svelte {cm:2025-03-06}
 
-(A) make #jquery
-(B) connect #jquery
+(A) make #jquery {cm:2025-03-10}
+(B) connect #jquery {cm:2025-03-10}
 
-(C) make list CARD component to all framework
+(C) make list CARD component to all framework {cm:2025-03-10}
 
-(C) delete firebase server
+(C) delete firebase server {cm:2025-03-10}
 
 (C) summary
 (D) post blog

@@ -15,8 +15,6 @@ import Write from './pages/Write';
 import NotAuth from './pages/NotAuth';
 import NotFound from './pages/NotFound';
 
-let page = '';
-
 $(document).ready(() => {
 	loadPage();
 });
@@ -25,27 +23,32 @@ $(window).on('hashchange', () => {
 	loadPage();
 });
 
-const loadPage = () => {
+const loadPage = async () => {
 	const currentPage = location.hash.split('/')[0];
-	console.log(location.hash);
+	console.log(currentPage);
+
+	let page: Function;
 
 	// routing
 	switch (currentPage) {
 		case '#list':
-			page = List();
+			page = List;
 			break;
 		case '#content':
-			page = Content();
+			page = Content;
 			break;
 		case '#write':
-			page = Write();
+			page = Write;
 			break;
 		case '#not-auth':
-			page = NotAuth();
+			page = NotAuth;
 			break;
 		default:
-			page = NotFound();
+			page = NotFound;
 	}
+	Layout(page, '#app');
+};
 
-	$('#app').html(Layout(page));
+export const htmlRender = (page: string) => {
+	$('#app').html(page);
 };
