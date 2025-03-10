@@ -8,7 +8,7 @@
 	],
 	"scripts": {
 		"dev": "npm run nodemon --workspace=server",
-		"build": "npm run build --workspaces",
+		"build": "npm run build --workspaces --if-present --ignore-scripts",
 		"dev-react": "npm run dev --workspace=react-repo",
 		"build-react": "npm run build --workspace=react-repo",
 		"dev-vue": "npm run dev --workspace=vue-repo",

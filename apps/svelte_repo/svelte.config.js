@@ -13,7 +13,11 @@ const config = {
 		// See https://svelte.dev/docs/kit/adapters for more information about adapters.
 		adapter: adapter({
 			out: '../server/dist/svelte-build'
-		})
+		}),
+		alias: {
+			'@/*': './src/*',
+			'@styles/*': '../styles/*'
+		}
 	}
 };
 
