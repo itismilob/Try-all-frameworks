@@ -87,8 +87,7 @@ Firebase Console에서 프로젝트를 생성 후 설정 파일 추가
 
 `server/.env` 파일 생성
 
-```js
-// server/.env
+```
 FIREBASE_DATABASE_URL=https://{firebaseConfig.authDomain}
 FIREBASE_SERVICE_ACCOUNT_PATH=../../admin/{AdminSDK.json}
 PORT=8080
