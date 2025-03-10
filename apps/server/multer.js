@@ -7,7 +7,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 // 업로드 폴더 경로 설정
-const uploadFolder = path.join(__dirname, './dist/public/uploads');
+const uploadFolder = path.join(__dirname, './public/uploads');
 
 // Multer 저장소 설정
 const storage = multer.diskStorage({

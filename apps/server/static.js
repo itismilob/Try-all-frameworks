@@ -9,7 +9,7 @@ const __dirname = dirname(__filename);
 
 const router = express.Router();
 
-router.use('/public', express.static(path.join(__dirname, './dist/public')));
+router.use('/public', express.static(path.join(__dirname, './public')));
 router.use('/styles', express.static(path.join(__dirname, '../styles')));
 router.use('/', express.static(path.join(__dirname, './dist/js')));
 
