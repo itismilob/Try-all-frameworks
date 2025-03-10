@@ -5,21 +5,23 @@ import bodyParser from 'body-parser';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import { initializeApp, cert } from 'firebase-admin/app';
+import dotenv from 'dotenv';
+
+// .env 파일 로드
+dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const serviceAccount = JSON.parse(
-	readFileSync('../../tryallframeworks-firebase-adminsdk-p2tx8-be3d9d5a4e.json', 'utf8')
-);
+const serviceAccount = JSON.parse(readFileSync(process.env.FIREBASE_SERVICE_ACCOUNT_PATH, 'utf8'));
 
 const server = express();
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 
 // Firebase 초기화
 initializeApp({
 	credential: admin.credential.cert(serviceAccount),
-	databaseURL: 'https://tryallframeworks.fierbaseio.com'
+	databaseURL: process.env.FIREBASE_DATABASE_URL
 });
 
 // Firebase 초기화 후에 라우터 import
