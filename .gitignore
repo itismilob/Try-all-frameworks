@@ -71,8 +71,7 @@ node_modules/
 
 # firebase
 firebaseConfig.js
-tryallframeworks-firebase-adminsdk-p2tx8-be3d9d5a4e.json
-
+admin/*
 
 
 # build files
